@@ -13,7 +13,7 @@ export const swapApi = createApi({
 			query: id => `films/${id}?format=json`,
 		}),
 		getCharacters: builder.query({
-			query: () => `people/?format=json`,
+			query: (page = 1) => `people/?page=${page}&format=json`,
 		}),
 		getCharacter: builder.query({
 			query: id => `people/${id}?format=json`,
@@ -24,6 +24,18 @@ export const swapApi = createApi({
 		getStarship: builder.query({
 			query: id => `starships/${id}?format=json`,
 		}),
+    getVehicles: builder.query({
+      query: (page = 1) => `vehicles/?page=${page}&format=json`
+    }),
+    getVehicle: builder.query({
+      query: id => `vehicles/${id}?format=json`
+    }),
+    getPlanets: builder.query({
+      query: (page = 1) => `planets/?page=${page}&format=json`
+    }),
+    getPlanet: builder.query({
+      query: id => `planet/${id}?format=json`
+    }),
 		getSearch: builder.mutation({
 			query: ({ str, filter }) => {
 				return `${filter}/?search=${str}&format=json`
